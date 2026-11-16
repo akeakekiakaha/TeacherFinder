@@ -64,10 +64,10 @@ function renderSearch() {
 function nextDateForDay(dayIndex) {
   const now = new Date();
   const target = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const diff = (dayIndex - target.getDay() + 7) % 7;
+  const targetWeekday = dayIndex + 1;
+  const diff = (targetWeekday - target.getDay() + 7) % 7;
   target.setDate(target.getDate() + diff);
-  // If the selected weekday is today, retain today as the relevant date.
-  return `${target.getFullYear()}-${String(target.getMonth()+1).padStart(2,"0")}-${String(target.getDate()).padStart(2,"0")}`;
+  return `${target.getFullYear()}-${String(target.getMonth() + 1).padStart(2, "0")}-${String(target.getDate()).padStart(2, "0")}`;
 }
 function messageMatches(message, category, value) {
   if (!value) return true;
