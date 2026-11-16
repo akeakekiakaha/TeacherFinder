@@ -2,8 +2,11 @@ name: Aktualizuj plany lekcji
 
 on:
   schedule:
-    # Niedziela, 20:17 czasu polskiego.
-    - cron: "17 20 * * 0"
+    # Nowy plan i pusty zestaw zmian na tydzień od poniedziałku.
+    - cron: "0 20 * * 0"
+      timezone: "Europe/Warsaw"
+    # Zmiany bieżącego tygodnia od poniedziałku do piątku.
+    - cron: "0 20 * * 1-5"
       timezone: "Europe/Warsaw"
   workflow_dispatch:
 
@@ -22,7 +25,11 @@ jobs:
           python-version: "3.12"
       - name: Zainstaluj zależności
         run: pip install -r requirements.txt
-      - name: Pobierz i przetwórz plany
+      - name: Odśwież zmiany bieżącego tygodnia
+        if: github.event_name == 'schedule' && github.event.schedule == '0 20 * * 1-5'
+        run: python scripts/import_plans.py --changes-only
+      - name: Rozpocznij tydzień i pobierz plan
+        if: github.event_name != 'schedule' || github.event.schedule == '0 20 * * 0'
         run: python scripts/import_plans.py
       - name: Zapisz zmienioną bazę
         run: |

@@ -36,12 +36,18 @@
         <div class="search-input-wrap"><span class="search-icon">⌕</span><input id="search-input" type="search" placeholder="Np. Ga, Zi, WE…" autocomplete="off"></div>
         <button id="clear-btn" class="clear-btn" type="button" aria-label="Wyczyść wyszukiwanie">×</button>
       </div>
-      <div class="quick-hint" id="search-hint">Wpisz kod nauczyciela, np. Ga albo WE.</div>
+      <div class="quick-hint" id="search-hint">Wpisz kod nauczyciela, np. Ga albo WE. Wyszukiwanie po inicjałach może być niedokładne — nie wszystkie nazwiska są przypisane do skrótów z planu.</div>
     </section>
 
     <section class="results-head">
       <div><div class="section-kicker">WYNIKI</div><h2 id="results-title">Wyszukaj nauczyciela</h2></div>
-      <span class="result-count" id="result-count">0 lekcji</span>
+      <div class="results-actions">
+        <div class="view-toggle" role="group" aria-label="Widok wyników">
+          <button class="view-button active" type="button" data-view="list" aria-pressed="true">Lista</button>
+          <button class="view-button" type="button" data-view="table" aria-pressed="false">Tabela tygodnia</button>
+        </div>
+        <span class="result-count" id="result-count">0 lekcji</span>
+      </div>
     </section>
 
     <section id="results" class="results" aria-live="polite">
@@ -57,7 +63,7 @@
       <div class="info-grid">
         <article class="info-card"><span class="info-symbol purple">◷</span><div><strong>Godziny lekcji</strong><p>Numery lekcji i przedziały czasowe pobierane z planu.</p></div></article>
         <article class="info-card"><span class="info-symbol cyan">⌂</span><div><strong>Sale i klasy</strong><p>Każdy wpis wskazuje salę oraz oddział, którego dotyczy.</p></div></article>
-        <article class="info-card"><span class="info-symbol green">↻</span><div><strong>Aktualizacja</strong><p>Dane są odświeżane automatycznie raz w tygodniu.</p></div></article>
+        <article class="info-card"><span class="info-symbol green">↻</span><div><strong>Aktualizacja</strong><p>Nowy tydzień: niedziela 20:00. Zmiany: poniedziałek–piątek o 20:00 czasu warszawskiego.</p></div></article>
       </div>
     </section>
 
