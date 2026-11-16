@@ -2,13 +2,17 @@ name: Aktualizuj plany lekcji
 
 on:
   schedule:
-    # Niedziela, 20:17 czasu polskiego.
+    # Niedziela, 20:17 czasu polskiego (CET/CEST).
     - cron: "17 20 * * 0"
       timezone: "Europe/Warsaw"
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: teacher-finder-data-imports
+  cancel-in-progress: false
 
 jobs:
   update:
